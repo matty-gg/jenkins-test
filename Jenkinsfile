@@ -9,7 +9,7 @@ pipeline {
         }
         stage('Deliver') {
             steps {
-                bat 'powershell -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process"'
+                bat 'powershell -Command "Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process -Force"'
                 bat 'powershell -File .\\jenkins\\scripts\\deliver.ps1'
                 input message: 'Finished using the web site? (Click "Proceed" to continue)'
                 bat 'powershell -File .\\jenkins\\scripts\\kill.ps1'
